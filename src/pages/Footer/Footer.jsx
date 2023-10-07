@@ -6,18 +6,18 @@ const Footer = () => {
         <div>
             <footer className="footer p-10 bg-base-300 text-base-content">
                 <nav>
-                    <header className="footer-title">Services</header>
-                    <Link className="link link-hover">Branding</Link>
-                    <Link className="link link-hover">Design</Link>
-                    <Link className="link link-hover">Marketing</Link>
-                    <Link className="link link-hover">Advertisement</Link>
+                    <header className="footer-title">Others</header>
+                    <p className="">Head Office: Dhanmondi, Dhaka.</p>
+                    <p className="">Contact No: 01888-000000</p>
+                    <p className="">Email: info@example.com</p>
+
                 </nav>
                 <nav>
                     <header className="footer-title">Quick Links</header>
-                    <Link className="link link-hover">Home</Link>
-                    <Link className="link link-hover">Contact</Link>
-                    <Link className="link link-hover">Blog</Link>
-                    <Link className="link link-hover">About us</Link>
+                    <Link to = '/' className="link link-hover">Home</Link>
+                    <Link to = '/contact' className="link link-hover">Contact</Link>
+                    <Link to = '/blog' className="link link-hover">Blog</Link>
+                    <Link to = '/about' className="link link-hover">About us</Link>
                 </nav>
                 <nav>
                     <header className="footer-title">Social</header>

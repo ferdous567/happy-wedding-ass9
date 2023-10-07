@@ -7,6 +7,7 @@ import Contact from "../pages/Contact/Contact";
 import Service from "../pages/Service/Service";
 import ErrorPage from "../errorPage/ErrorPage";
 import Login from "../signInOut/Login";
+import Register from "../signInOut/Register";
 
 
  
@@ -36,6 +37,10 @@ import Login from "../signInOut/Login";
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             }
         ]
     }
