@@ -1,13 +1,16 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-
+import toast, { Toaster } from 'react-hot-toast';
 
 
 
 const Register = () => {
 
     const {createUser} = useContext(AuthContext);
+
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
     const handleRegister = e => {
         e.preventDefault();
@@ -17,14 +20,18 @@ const Register = () => {
         const email = form.get('email');
         const password = form.get('password');
         console.log(email, password);
+        setError('')
+        setSuccess('')
 
         createUser(email, password)
         .then(result =>{
             console.log(result.user)
             e.target.reset()
+            setSuccess(toast('Successfully Create Account.'))
         })
         .catch(error =>{
             console.error(error)
+            setError(error.message)
         })
     }
     return (
@@ -59,7 +66,16 @@ const Register = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            <div className="form-control mt-6">
+                            {
+                                error && <p className="text-red-500 text-sm">{error}</p>
+                            }
+                            {
+                                success && <>
+                                <p className="text-green-500">{success}</p>
+                                <Navigate to = '/login'></Navigate>
+                                </>
+                            }
+                            <div className="form-control mt-3">
                                 <button className="btn btn-primary">Register</button>
                             </div>
                         </form>
@@ -70,7 +86,9 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+            <Toaster />
         </div>
+        
     );
 };
 
