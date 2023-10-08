@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from 'sweetalert2'
+import { updateProfile } from "firebase/auth";
 
 
 
@@ -11,6 +12,7 @@ const Register = () => {
 
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+ 
 
     const handleRegister = e => {
         e.preventDefault();
@@ -18,8 +20,9 @@ const Register = () => {
         const form = new FormData(e.currentTarget);
         // console.log(form.get('email'));
         const email = form.get('email');
+        const name = form.get('name');
         const password = form.get('password');
-        console.log(email, password);
+        console.log(name, email, password);
 
         if(password.length < 6){
             setError('Password should be at least 6 characters or longer.');
@@ -39,15 +42,23 @@ const Register = () => {
 
         createUser(email, password)
         .then(result =>{
-            console.log(result.user)
-            e.target.reset()
+            console.log(result.user);
+            e.target.reset();
+
+            updateProfile(result.user, {
+                displayName: name,
+                photoURL: "https://example.com/jane-q-user/profile.jpg"
+            })
+            .then(() => console.log('Profile Updated'))
+            .catch()
+
             setSuccess(
                 Swal.fire(
                     'Congratulations!!',
                     'Registration Completed! Login Now.',
                     'success'
                   )
-            )
+            );
         })
         .catch(error =>{
             console.error(error)
@@ -77,11 +88,15 @@ const Register = () => {
                                 </label>
                                 <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                             </div>
-                            <div className="form-control">
+                            <div className="form-control relative">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                                <input 
+                                type="password" 
+                                name="password" 
+                                placeholder="password" 
+                                className="input input-bordered" required />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>

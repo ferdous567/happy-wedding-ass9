@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
-// import user from "../../assets/user.png";
+import userImg from "../../assets/user.png";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -51,13 +51,13 @@ const Navbar = () => {
                         user ? <>
                             <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                    <div className="w-10 rounded-full">
-                                        <img src={user.photoURL ? user.photoURL : {user}} />
+                                    <div className=" w-18 rounded-full">
+                                        <img className="" src= {userImg}  />
                                     </div>
                                 </label>
                                 <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                                     
-                                    <li><a>Settings</a></li>
+                                    <li className="text-xl p-2">{user.displayName}</li>
                                    
                                     <button onClick={handleSignOut} className="btn btn-success">Log Out</button>
                                     
