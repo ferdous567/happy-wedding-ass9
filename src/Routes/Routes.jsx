@@ -32,7 +32,8 @@ import Register from "../signInOut/Register";
             },
             {
                 path: '/service',
-                element: <Service></Service>
+                element: <Service></Service>,
+                loader: () => fetch('/service.json')
             },
             {
                 path: '/login',

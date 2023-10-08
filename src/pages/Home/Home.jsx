@@ -10,15 +10,15 @@ import HomeService from "./HomeService";
 const Home = () => {
     return (
         <div>
-            <div  className="w-11/12 mx-auto">
-                
-                <Banner></Banner>
+
+            <Banner></Banner>
+            <div className="w-11/12 mx-auto">
                 <HomeService></HomeService>
                 <AboutHome></AboutHome>
                 <HomeBlog></HomeBlog>
                 <AboutContact></AboutContact>
             </div>
-            
+
         </div>
     );
 };
