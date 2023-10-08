@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const SingleService = ({ service }) => {
-    const { title, image,description, price } = service;
+    const { id, title, image,description, price } = service;
     return (
         <div className='flex'>
             <div className="card  bg-base-100 shadow-xl flex-grow">
@@ -10,7 +12,9 @@ const SingleService = ({ service }) => {
                     <p>{description}</p>
                     <p>Price: {price}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Show Details</button>
+                        <Link to={`/serviceDetails/${id}`}>
+                        <button  className="btn btn-primary">Show Details</button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -18,4 +22,7 @@ const SingleService = ({ service }) => {
     );
 };
 
+SingleService.propTypes = {
+    service: PropTypes.object
+}
 export default SingleService;

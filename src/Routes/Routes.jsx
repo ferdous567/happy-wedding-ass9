@@ -8,6 +8,8 @@ import Service from "../pages/Service/Service";
 import ErrorPage from "../errorPage/ErrorPage";
 import Login from "../signInOut/Login";
 import Register from "../signInOut/Register";
+import ServiceDetails from "../pages/Service/ServiceDetails";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
  
@@ -24,11 +26,15 @@ import Register from "../signInOut/Register";
             },
             {
                 path: '/about',
-                element: <About></About>
+                element: <PrivateRoute>
+                    <About></About>
+                </PrivateRoute>
             },
             {
                 path: '/contact',
-                element: <Contact></Contact>
+                element: <PrivateRoute>
+                    <Contact></Contact>
+                </PrivateRoute>
             },
             {
                 path: '/service',
@@ -42,6 +48,13 @@ import Register from "../signInOut/Register";
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/serviceDetails/:id',
+                element: <PrivateRoute>
+                    <ServiceDetails></ServiceDetails>
+                </PrivateRoute>
+                
             }
         ]
     }
