@@ -1,28 +1,29 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+// import user from "../../assets/user.png";
 
 const Navbar = () => {
-    const {user, logOut} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
-    const handleSignOut = () =>{
+    const handleSignOut = () => {
         logOut()
-        .then(result =>{
-            console.log(result.user)
-        })
-        .catch(error => {
-            console.error(error)
-        })
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
 
     const navLinks = <>
-        <li><NavLink to = '/'>Home</NavLink></li>
-        <li><NavLink to = '/about'>About Us</NavLink></li>
-        <li><NavLink to = '/service'>Service</NavLink></li>
-        <li><NavLink to = '/blog'>Blog</NavLink></li>
-        <li><NavLink to = '/contact'>Contact Us</NavLink></li>
-        
-        
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/about'>About Us</NavLink></li>
+        <li><NavLink to='/service'>Service</NavLink></li>
+        <li><NavLink to='/blog'>Blog</NavLink></li>
+        <li><NavLink to='/contact'>Contact Us</NavLink></li>
+
+
     </>
     return (
         <div className="w-11/12 mx-auto">
@@ -37,25 +38,40 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="font-extrabold text-4xl text-pink-500 hover:text-pink-400 ">
-                    <h2>Happy <span className="text-cyan-500">Wedding</span></h2>
+                        <h2>Happy <span className="text-cyan-500">Wedding</span></h2>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-sky-600 text-lg font-bold">
-                    {navLinks}
+                        {navLinks}
                     </ul>
                 </div>
                 <div className="navbar-end">
-                {
-                    user ?
-                    <button onClick={handleSignOut} className="btn btn-success">Log Out</button>
-                    :
-                    
-                    <Link to = '/login' className="btn btn-secondary font-bold text-white">Login</Link>
-                
-                }
+                    {
+                        user ? <>
+                            <div className="dropdown dropdown-end">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img src={user.photoURL ? user.photoURL : {user}} />
+                                    </div>
+                                </label>
+                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                    
+                                    <li><a>Settings</a></li>
+                                   
+                                    <button onClick={handleSignOut} className="btn btn-success">Log Out</button>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </>
+                            :
+
+                            <Link to='/login' className="btn btn-secondary font-bold text-white">Login</Link>
+
+                    }
                 </div>
-                
+
             </div>
         </div>
     );

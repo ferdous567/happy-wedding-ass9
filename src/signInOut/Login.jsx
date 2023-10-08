@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-
+import Swal from 'sweetalert2'
 
 
 
@@ -44,8 +44,14 @@ const Login = () => {
             .then(result => {
                 console.log(result.user)
                 e.target.reset()
-                setSuccess('Successfully Create Account.')
                 navigate(location?.state ? location.state : '/')
+                setSuccess(
+                    Swal.fire(
+                        'Good job!',
+                        'You,r Successfully Logged In!',
+                        'success'
+                      )
+                )
             })
             .catch(error => {
                 console.error(error)

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import toast, { Toaster } from 'react-hot-toast';
+import Swal from 'sweetalert2'
 
 
 
@@ -20,6 +20,20 @@ const Register = () => {
         const email = form.get('email');
         const password = form.get('password');
         console.log(email, password);
+
+        if(password.length < 6){
+            setError('Password should be at least 6 characters or longer.');
+            return;
+        }
+        else if(!/[A-Z]/.test(password)){
+            setError('Password must be an Upprecase latter.');
+            return;
+        }
+        else if(!/[0-9]/.test(password)){
+            setError('Password have should be a number.');
+            return;
+        }
+
         setError('')
         setSuccess('')
 
@@ -27,7 +41,13 @@ const Register = () => {
         .then(result =>{
             console.log(result.user)
             e.target.reset()
-            setSuccess(toast('Successfully Create Account.'))
+            setSuccess(
+                Swal.fire(
+                    'Congratulations!!',
+                    'Registration Completed! Login Now.',
+                    'success'
+                  )
+            )
         })
         .catch(error =>{
             console.error(error)
@@ -71,8 +91,8 @@ const Register = () => {
                             }
                             {
                                 success && <>
-                                <p className="text-green-500">{success}</p>
-                                <Navigate to = '/login'></Navigate>
+                                <p className="text-green-500"></p>
+                                <Navigate to = '/login'>{success}</Navigate>
                                 </>
                             }
                             <div className="form-control mt-3">
@@ -86,7 +106,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-            <Toaster />
+            
         </div>
         
     );
