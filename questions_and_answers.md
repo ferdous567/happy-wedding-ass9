@@ -19,7 +19,7 @@ console.log(greetign);
 <p>
 
 #### Answer: ? {}
-A: {}
+A: {},,
 <i>This output is an epmty object. Because variable declares an empty
 object.</i>
 
@@ -45,8 +45,10 @@ sum(1, "2");
 <p>
 
 #### Answer: ?
-
-<i>Write your explanation here</i>
+Ans: C: "12",,
+<i>a = 1, its a number and b = '2' is string. When sum = num + string,
+javascript always output you give a full of string. so output is 1 + '2'
+= '12'.</i>
 
 </p>
 </details>
@@ -71,8 +73,9 @@ console.log(food);
 <p>
 
 #### Answer: ?
-
-<i>Write your explanation here</i>
+Ans: A,,,
+<i>variable 'food' declares 4 food items, then info declare first item of
+food and replace the previous value. But food variables value inside array does not change. So console.log(food) = A</i>
 
 </p>
 </details>
@@ -96,8 +99,8 @@ console.log(sayHi());
 <p>
 
 #### Answer: ?
-
-<i>Write your explanation here</i>
+Ans : B: "Hi there, undefined",,,
+<i>The console log output of the say hi() is a function. When no arguments is passed to the function call, it will return "Hi there, undefined"</i>
 
 </p>
 </details>
@@ -124,8 +127,8 @@ console.log(count);
 <p>
 
 #### Answer: ?
-
-<i>Write your explanation here</i>
+Ans: C: '3',,,
+<i>The output of console.log(count) is 3 . Because of only three elements of the numbers array are truthy (1, 2 and 3).</i>
 
 </p>
 </details>
