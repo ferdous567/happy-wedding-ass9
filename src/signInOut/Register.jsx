@@ -18,11 +18,11 @@ const Register = () => {
         e.preventDefault();
         // console.log(e.currentTarget);
         const form = new FormData(e.currentTarget);
-        // console.log(form.get('email'));
+        const photo = form.get('photo');
         const email = form.get('email');
         const name = form.get('name');
         const password = form.get('password');
-        console.log(name, email, password);
+        console.log(photo, name, email, password);
 
         if(password.length < 6){
             setError('Password should be at least 6 characters or longer.');
@@ -47,7 +47,7 @@ const Register = () => {
 
             updateProfile(result.user, {
                 displayName: name,
-                photoURL: "https://example.com/jane-q-user/profile.jpg"
+               
             })
             .then(() => console.log('Profile Updated'))
             .catch()
@@ -82,6 +82,7 @@ const Register = () => {
                                 </label>
                                 <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
                             </div>
+                            
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>

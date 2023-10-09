@@ -36,6 +36,8 @@ const Login = () => {
         const password = form.get('password');
         console.log(email, password);
 
+        
+
         setError('')
         setSuccess('')
 
@@ -44,6 +46,7 @@ const Login = () => {
             .then(result => {
                 console.log(result.user)
                 e.target.reset()
+
                 navigate(location?.state ? location.state : '/')
                 setSuccess(
                     Swal.fire(
@@ -52,10 +55,19 @@ const Login = () => {
                         'success'
                       )
                 )
+                if(!result.user.email){
+                    return setError(error.message)
+                }
+                else if(!result.user.password){
+                    return setError(error.message)
+                }
+                
+                
             })
             .catch(error => {
-                console.error(error)
+                // console.error(error)
                 setError(error.message)
+                
             })
     }
     return (
