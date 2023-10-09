@@ -6,4 +6,5 @@
 * Using firebase for backend site.
 * Using AOS package, react toast, marquee etc.
 
-website link: 
+website link: https://happy-wedding-assignment.web.app/
+
