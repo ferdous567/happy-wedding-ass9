@@ -22,9 +22,10 @@ const Home = () => {
             <Banner></Banner>
             <div className="w-11/12 mx-auto">
                 <div data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
-                    {/* <HomeService></HomeService> */}
+                <h3 className="text-4xl font-bold text-center text-cyan-500 my-6 underline">Our services</h3>
                     <div className='my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-full
             w-11/12 mx-auto'>
+                
                     {
                         service.slice(0, 6).map(serviceData => <SingleService key={serviceData.id}
                         service={serviceData}></SingleService>)
