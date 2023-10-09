@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {  useParams } from "react-router-dom";
 
 const ServiceDetails = () => {
+    
     const {id} = useParams();
 
     const [detail, setDetail] = useState(null);
@@ -31,10 +32,12 @@ const ServiceDetails = () => {
             <p className="mb-5">{all_description}</p>
             </div>
             <div className="text-center my-5 ">
-            <button className="btn btn-outline btn-secondary">Get Service</button>
+            <button className="btn btn-outline btn-secondary">To Get Our Service Click This Button</button>
             </div>
         </div>
     );
+    
+
 };
 
 export default ServiceDetails;
